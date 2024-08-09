@@ -30,3 +30,10 @@ Route::post('daftar', [SiswaController::class, 'daftar'])->name('daftar.action')
 Route::get('siswa', [SiswaController::class, 'index'])->name('siswa');
 
 Route::post('cari', [SiswaController::class, 'carisiswa'])->name('cari.action');
+
+Route::get('/terimasiswa/{id}', [SiswaController::class, 'terimasiswa'])->name('terimasiswa');
+Route::get('/tolaksiswa/{id}', [SiswaController::class, 'tolaksiswa'])->name('tolaksiswa');
+
+Route::get('siswaditerima', [SiswaController::class, 'indexterima'])->name('siswaditerima');
+Route::get('siswaditolak', [SiswaController::class, 'indextolak'])->name('siswaditolak');
+

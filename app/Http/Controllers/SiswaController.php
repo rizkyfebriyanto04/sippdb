@@ -51,8 +51,10 @@ class SiswaController extends Controller
         // $siswas = Siswa_model::all();
         // return $siswas;
         $data = DB::table('siswa as sm')
+                ->select('sm.id as sid', 'sm.*','jk.*','jm.*')
                 ->Join('jeniskelamin as jk', 'jk.id', '=', 'sm.objectjeniskelaminfk')
                 ->Join('jurusan as jm', 'jm.id', '=', 'sm.objectjurusanfk')
+                ->where('keterangan')
                 ->get();
         // return $data;
         return view('daftar_siswa', compact('data'));
@@ -75,4 +77,35 @@ class SiswaController extends Controller
         }
     }
 
+    public function terimasiswa($id){
+        $siswa = Siswa_model::find($id);
+        $siswa->keterangan = 'Diterima';
+        $siswa->save();
+        return redirect('siswa')->with('success', 'Siswa Di Terima');
+
+    }
+
+    public function tolaksiswa($id){
+        $siswa = Siswa_model::find($id);
+        $siswa->keterangan = 'Ditolak';
+        $siswa->save();
+        return redirect('siswa')->with('warning', 'Siswa Di Tolak');
+    }
+
+    public function indexterima(){
+        $data = DB::table('siswa as sm')
+                ->Join('jeniskelamin as jk', 'jk.id', '=', 'sm.objectjeniskelaminfk')
+                ->Join('jurusan as jm', 'jm.id', '=', 'sm.objectjurusanfk')
+                ->where('keterangan','=','Diterima')
+                ->get();
+        return view('daftar_siswa_terima', compact('data'));
+    }
+    public function indextolak(){
+        $data = DB::table('siswa as sm')
+                ->Join('jeniskelamin as jk', 'jk.id', '=', 'sm.objectjeniskelaminfk')
+                ->Join('jurusan as jm', 'jm.id', '=', 'sm.objectjurusanfk')
+                ->where('keterangan','=','Ditolak')
+                ->get();
+        return view('daftar_siswa_tolak', compact('data'));
+    }
 }

@@ -29,7 +29,17 @@
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('siswa') }}">
                     <i class="fas fa-fw fa-user"></i>
-                    <span>Siswa</span></a>
+                    <span>Seluruh Siswa</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('siswaditerima') }}">
+                    <i class="fas fa-user-check"></i>
+                    <span>Siswa Di Terima</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('siswaditolak') }}">
+                    <i class="fas fa-user-times"></i>
+                    <span>Siswa Di Tolak</span></a>
             </li>
 
             <!-- Nav Item - Pages Collapse Menu -->

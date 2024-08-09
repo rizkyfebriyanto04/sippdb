@@ -76,21 +76,12 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Daftar Siswa Yang Terdaftar</h1>
-                    @if (session('success'))
-                        <div class="alert alert-success" id="success-alert">
-                            <b>Berhasil !</b> {{ session('success') }}
-                        </div>
-                    @endif
-                    @if (session('warning'))
-                        <div class="alert alert-warning" id="success-alert">
-                            {{ session('warning') }}
-                        </div>
-                    @endif
+                    <h1 class="h3 mb-2 text-gray-800">Daftar Siswa Di Tolak</h1>
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary"></h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -104,7 +95,6 @@
                                             <th>Jenis Kelamin</th>
                                             <th>Jurusan</th>
                                             <th>Jalur Masuk</th>
-                                            <th>Opsi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -128,19 +118,10 @@
                                                         Jalur SKTM
                                                     @endif
                                                 </td>
-                                                <td>
-                                                    <a href="{{ route('terimasiswa', ['id' => $item->sid]) }}" class="btn btn-success">
-                                                        <span class="text">Di terima</span>
-                                                    </a>
-                                                    <a href="{{ route('tolaksiswa', ['id' => $item->sid]) }}" class="btn btn-danger">
-                                                        <span class="text">Di Tolak</span>
-                                                    </a>
-                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-
                             </div>
                         </div>
                     </div>
@@ -210,7 +191,7 @@
     {{-- <script src="{{'assets/js/demo/chart-pie-demo.js'}}"></script> --}}
 
     <!-- Include JS Files -->
-    {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> --}}
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
