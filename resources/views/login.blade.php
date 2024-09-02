@@ -148,7 +148,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="nisn" class="col-form-label">NISN:</label>
-                                    <input type="text" class="form-control" id="nisn" name="nisn">
+                                    <input type="text" class="form-control" id="nisn" name="nisn" value="{{ $nisn }}" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="nissmp" class="col-form-label">NIS SMP:</label>

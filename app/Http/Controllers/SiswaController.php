@@ -10,6 +10,7 @@ class SiswaController extends Controller
 {
     public function daftar(Request $request)
     {
+        $nisn = $this->generateNisn();
         // return $request;
         $request->validate([
             'nisn' => 'required',
@@ -27,7 +28,7 @@ class SiswaController extends Controller
         ]);
 
         $siswa = new Siswa_model([
-            'nisn' => $request->nisn,
+            'nisn' => $nisn,
             'nis' => $request->nissmp,
             'namalengkap' => $request->namalengkap,
             'objectjeniskelaminfk' => $request->jeniskelamin,
@@ -107,5 +108,32 @@ class SiswaController extends Controller
                 ->where('keterangan','=','Ditolak')
                 ->get();
         return view('daftar_siswa_tolak', compact('data'));
+    }
+
+    private function generateNisn()
+    {
+        $currentYear = date('y');
+        $codePrefix = '16.010';
+
+
+        $lastNisn = DB::table('siswa')
+            ->where('nisn', 'like', "$currentYear.$codePrefix.%")
+            ->orderByRaw('CAST(SUBSTRING_INDEX(nisn, ".", -1) AS UNSIGNED) DESC')
+            ->value('nisn');
+
+
+        $lastNumber = 0;
+        if ($lastNisn) {
+            $parts = explode('.', $lastNisn);
+            if (isset($parts[3])) {
+                $lastNumber = intval($parts[3]);
+            }
+        }
+
+        $newNumber = str_pad($lastNumber + 1, 3, '0', STR_PAD_LEFT);
+
+        $newNisn = $currentYear . '.' . $codePrefix . '.' . $newNumber;
+
+        return $newNisn;
     }
 }

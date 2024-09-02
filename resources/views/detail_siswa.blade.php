@@ -96,6 +96,7 @@
                                 <p><strong>Jenis Kelamin:</strong> {{ $item->jeniskelamin }}</p>
                                 <p><strong>Jurusan:</strong> {{ $item->jurusan }}</p>
                                 <p><strong>Jalur Masuk:</strong> {{ $item->jalurmasuk }}</p>
+                                <p><strong>Keterangan:</strong> {{ $item->keterangan }}</p>
                             @endforeach
                         </div>
                     </div>
